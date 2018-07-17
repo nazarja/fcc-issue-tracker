@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue Tracker</title>
+    <link id="favicon" rel="icon" href="https://hyperdev.com/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/public/style.css">
+  </head>
+  <body>
+    
+    
+    <header>
+      <h1>Issue Tracker</h1>
+    </header>
+    
+    
+    <div class="userstories">
+      <h2>A freeCodeCamp Information Security &amp; Quality Assurance Project</h2>
+        <blockquote>
+           <p>This challange makes use of NodeJS and ExpressJS</p>
+        </blockquote>
+    </div>
+    
+    <div id="userstories">
+      <blockquote>
+        <h3>User Stories</h3>
+        <ol>
+          <li>Prevent cross site scripting(XSS attack).</li>
+          <li>I can <b>POST</b> <code>/api/issues/{projectname}</code> with form data containing required <i>issue_title</i>, <i>issue_text</i>, <i>created_by</i>, and optional <i>assigned_to</i> and <i>status_text</i>.</li>
+          <li>The object saved (and returned) will include all of those fields (blank for optional no input) and also include <i>created_on</i> ( date/time), <i>updated_on</i> (date/time), <i>open</i> (boolean, true for open, false for closed), and <i>_id</i>.</li>
+          <li>I can <b>PUT</b> <code>/api/issues/{projectname}</code> with a <i>_id</i> and any fields in the object with a value will be returned 'successfully updated' or 'could not update '+_id. This should always update - <i>updated_on</i>. If no fields are sent then return 'no updated field sent'.</li>
+          <li>I can <b>DELETE</b> <code>/api/issues/{projectname}</code> with a <i>_id</i> to completely delete an issue. If no _id is sent return '_id error', success: 'deleted '+_id, failed: 'could not delete '+_id.</li>
+          <li>I can <b>GET</b> <code>/api/issues/{projectname}</code> for an array of all issues on that specific project with all the information for each issue as was returned when posted.</li>
+          <li>I can filter my get request by also passing along any field and value in the query ( ie. <code>/api/issues/{project}?open=false</code>). I can pass along as many fields/values as I want.</li>
+          <li>All 11 functional tests are complete and passing.</li>
+        </ol>
+      </blockquote>
+    </div>
+    
+    <div class="userstories">
+      <h3>Example get usage:</h3>
+        <code>/api/issues/{project}</code><br />
+        <code>/api/issues/{project}?open=true&amp;assigned_to=Joe</code><br />
+        <br />
+        <code>Click me:</code><a href="https://sm-issue-tracker.glitch.me/api/issues/apitest">https://sm-issue-tracker.glitch.me/api/issues/apitest</a><br />
+        <code>Click me:</code><a href="https://sm-issue-tracker.glitch.me/api/issues/apitest?open=true">https://sm-issue-tracker.glitch.me/api/issues/apitest?open=true</a><br />
+        <h3>Example return:</h3>
+        <code>[{"_id":"5871dda29faedc3491ff93bb","issue_title":"Fix error in posting data","issue_text":"When we post data it has an error.","created_on":"2017-01-08T06:35:14.240Z","updated_on":"2017-01-08T06:35:14.240Z","created_by":"Joe","assigned_to":"Joe","open":true,"status_text":"In QA"},...]</code>
+        <br />
+        <h2><a href="/apitest/">Go to <i>/apitest/</i> project issues</a></h2>
+    </div>
+
+    <hr />
+    <!--  JSON Result    -->
+    <h4 style="margin-top:25px; margin-bottom: 10px;">Results:</h4>
+    <code id="jsonResult"></code>
+
+    <div id="testui" style="margin-top: 35px; margin-bottom: 50px;">
+    
+      <!--    POST    -->
+      <div class="form"> 
+        <h3>Submit issue on <i>apitest</i></h3>
+        <form id="testForm" class="border">
+          <input type="text" name="issue_title" placeholder="* Title" required="">
+          <br />
+          <textarea type="text" name="issue_text" placeholder="* Text" required=""></textarea>
+          <br />
+          <input type="text" name="created_by" placeholder="* Created by" required="">
+          <br />
+          <input type="text" name="assigned_to" placeholder="(opt) Assigned to">
+          <br />
+          <input type="text" name="status_text" placeholder="(opt) Status text">
+          <br />
+          <button type="submit">Submit Issue</button>
+        </form>
+      </div>
+
+      <!--    PUT    -->
+      <div class="form"> 
+        <h3>Update issue on <i>apitest</i></h3>
+        <form id="testForm2" class="border">
+          <input type="text" name="_id" placeholder="* _id" required="">
+          <br />
+          <input type="text" name="issue_title" placeholder="(opt) Title">
+          <br />
+          <textarea type="text" name="issue_text" placeholder="(opt) Text"></textarea>
+          <br />
+          <input type="text" name="created_by" placeholder="(opt) Created by">
+          <br />
+          <input type="text" name="assigned_to" placeholder="(opt) Assigned to">
+          <br />
+          <input type="text" name="status_text" placeholder="(opt) Status text">
+          <br />
+          <br />
+          <label><input type="checkbox" name="open" value="false"> Close Issue</label>
+          <br />
+          <button type="submit">Submit Issue</button>
+        </form>
+      </div> 
+      
+      
+      <!--    DELETE    -->
+      <div class="form">
+        <h3>Delete issue on <i>apitest</i></h3>
+        <form id="testForm3" class="border">
+          <input type="text" name="_id" placeholder="* _id" required="">
+          <br />
+          <button type="submit">Delete Issue</button>
+        </form>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Code and Design by <a href="http://seanmurphy.eu/" target="_blank">Sean Murphy</a></p>
+    </footer>
+    
+
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
+    <script>
+      $(function() {
+        $('#testForm').submit(function(e) {
+          $.ajax({
+            url: '/api/issues/apitest',
+            type: 'post',
+            data: $('#testForm').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+        $('#testForm2').submit(function(e) {
+          $.ajax({
+            url: '/api/issues/apitest',
+            type: 'put',
+            data: $('#testForm2').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+        $('#testForm3').submit(function(e) {
+          $.ajax({
+            url: '/api/issues/apitest',
+            type: 'delete',
+            data: $('#testForm3').serialize(),
+            success: function(data) {
+              $('#jsonResult').text(JSON.stringify(data));
+            }
+          });
+          e.preventDefault();
+        });
+      });
+   </script>
+  </body>
+</html>

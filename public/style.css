@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Special+Elite');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+body {
+  max-width: 1100px;
+  margin: auto;
+}
+
+h1 {
+  font-family: 'Special Elite', sans-serif;
+  font-size: 2em;
+  text-align: center;
+  padding: 50px 0 20px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.1em;
+}
+
+h3 {
+  font-size: .95em;
+}
+
+a {
+  font-size: 0.9em;
+}
+
+p {
+  font-size: 0.90em;
+}
+
+li {
+  font-size: .85em;
+  list-style-type: square;
+  line-height: 1.5em;
+}
+
+b {
+  color: red;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+    word-wrap: break-word;
+}
+
+input[type="text"] {
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 30px;
+  height: 30px;
+  padding-left: 20px; 
+  font-family: 'Open Sans', san-serif;
+  width: 80%;
+  margin-top: 10px;
+}
+
+input[type="submit"], button[type="submit"] {
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0);
+  background-color: RGB(0,120,215);
+  width: 100px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  font-family: 'Open Sans', san-serif;
+  margin-top: 15px;
+}
+
+textarea {
+  min-width: 80%;
+  min-height: 100px;
+  margin: 20px 0 5px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  padding: 10px 0 0 20px;
+  resize: vertical;
+}
+
+label {
+  margin-top: 15px;
+  margin-left: 5px;
+  display: inline-block;
+}
+
+hr {
+  margin: 50px 0;
+}
+
+blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 5px solid #eee;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+}
+
+a, a:active, a:visited {
+  color: #3661A2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#userstories, .userstories {
+  padding-top: 0;
+  margin-top: 30px;
+}
+
+.closeIssue, .deleteIssue {
+  font-size: 1.1em;
+}
+
+.issue {
+  margin: 20px;
+  padding: 5px;
+  border: 2px solid black;
+}
+
+.closed {
+  background-color: lightgrey;
+}
+
+.id {
+  font-size: 10.5px;
+}
+
+.form {
+  display: inline-flex;
+  flex-direction: column;
+  width: 33%;
+  vertical-align: top;
+}
+
+h3 {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .form {
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+  }
+  body {
+    max-width: 1100px;
+    margin: 0 15px;
+  }
+}
